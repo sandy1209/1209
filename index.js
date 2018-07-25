@@ -20,15 +20,21 @@ app.get('/', function(request, response){ //app.get就是幫你做路由(分辨�
 	response.end(); //end為回傳給使用者
 });
 
-app.get('/database', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
+app.get('/api/test', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
 	var collection = myDB.collection('sandy'); //使用myDB的方法collection('data')取得data這個collection
 	collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
 		if(err){                                     //使用toArray()將資料轉成陣列，function的docs是轉成陣列後的結果
-			response.status(406).end();              //轉陣列過程若有err，回傳給錯誤碼406，此為Http協定狀態碼      
+			response.status(406).send(err);
+			response.end();              //轉陣列過程若有err，回傳給錯誤碼406，此為Http協定狀態碼      
 		} else{                                      //.end()為將資料回傳給使用者
 			response.type('application/json');       //沒有錯誤回傳狀態碼200並附帶著資料，因為MongoDB存的資料就是JSON，所以不用特別轉換
 			response.status(200).send(docs);
 			response.end();
+	var sandy - db.collection('sandy');
+	sandy.find({'name' : 'sandy'}).toArray(function(err,docs))
+			{
+				console.log(json.stringify(docs));
+			}
 		}
    });
 });
