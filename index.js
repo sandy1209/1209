@@ -2,8 +2,7 @@ var express = require('express'); //require為使用那些模組
 var mongodb = require('mongodb'); //使用模組mongodb
 var app = express(); //建立express實體，將express初始化，去NEW一個express，變數app才是重點。
 
-var mongodbURL =
-'mongodb://sandy1209:a0919493100@ds125021.mlab.com:25021/sandy1209'; //將MongoDB的位置在Server程式碼中以一個變數儲存
+var mongodbURL ='mongodb://sandy1209:a0919493100@ds125021.mlab.com:25021/sandy1209'; //將MongoDB的位置在Server程式碼中以一個變數儲存
 
 var myDB; //建立一個全域變數myDB
 mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.MongoClient的方法connect()進行連線
@@ -32,11 +31,6 @@ app.get('/api/test', function(request, response){ //連接到/api/test才會做�
 			response.end();
 		}
    });
-});
-
-var server = app.listen(process.env.PORT || 8080, function() {
-  var port = server.address().port;
-  console.log("App now running on port", port);
 });
 
 app.listen(5000);
