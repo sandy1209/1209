@@ -6,11 +6,11 @@ var mongodbURL =
 'mongodb://sandy1209:a0919493100@ds125021.mlab.com:25021/sandy1209'; //將MongoDB的位置在Server程式碼中以一個變數儲存
 
 var myDB; //建立一個全域變數myDB
-mongodb.MongoClient.connect(mongodbURL, function(err, db){ //使用mongodb.MongoClient的方法connect()進行連線
+mongodb.MongoClient.connect(mongodbURL, function(err, client){ //使用mongodb.MongoClient的方法connect()進行連線
 	if(err){                                               //事件監聽器用在非同步程式碼，不確定何時會用到
 		console.log(err);                                  //若回傳的參數有error，用console.log()印出錯誤內容
 	} else{
-		myDB = db;                                         //在mongoDB成功連線後，留住db物件
+		myDB = client.db('sandy1209');                                         //在mongoDB成功連線後，留住db物件
 		console.log('connection success');                 //若沒有錯誤表示連線成功，印出connection success
 	}
 });
