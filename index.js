@@ -33,6 +33,19 @@ app.get('/api/test', function(request, response){ //連接到/api/test才會做�
    });
 });
 
+app.get('/api/Insert', function(request, response){
+	var title = request.query.title;
+	var desc = request.query.desc;
+	var owner = request.query.owner;
+	var time = request.query.time;
+	response status (200).send('Insert title ='+ title +',desc)
+});
+
+
+
+
+
+
 var server = app.listen(process.env.PORT || 8080, function() {
   var port = server.address().port;
   console.log("App now running on port", port);
