@@ -20,6 +20,23 @@ app.get('/', function(request, response){ //app.get就是幫你做路由(分辨�
 	response.end(); //end為回傳給使用者
 });
 
+app.get('/api/query', function(request, response){
+	response status (200).send('query is under construction');
+});
+
+app.get('/api/Insert', function(request, response){
+	var title = request.query.title;
+	var desc = request.query.desc;
+	var owner = request.query.owner;
+	var time = request.query.time;
+	response status (200).send('Insert title ='+ title +',desc')
+});
+
+app.get('/api/delete', function(request, response){
+	var id = request.query.id;
+	response status (200).send('Remove id ='+ id);
+});
+
 app.get('/api/test', function(request, response){ //連接到/api/test才會做的事情，request帶有連接進來的資訊(參數)，response為回傳的內容。
 	var collection = myDB.collection('sandy'); //使用myDB的方法collection('data')取得data這個collection
 	collection.find({}).toArray(function(err, docs){ //使用collection的方法find()取得資料表內的內容，{}表示取得全部內容
@@ -32,19 +49,6 @@ app.get('/api/test', function(request, response){ //連接到/api/test才會做�
 		}
    });
 });
-
-app.get('/api/Insert', function(request, response){
-	var title = request.query.title;
-	var desc = request.query.desc;
-	var owner = request.query.owner;
-	var time = request.query.time;
-	response status (200).send('Insert title ='+ title +',desc)
-});
-
-
-
-
-
 
 var server = app.listen(process.env.PORT || 8080, function() {
   var port = server.address().port;
