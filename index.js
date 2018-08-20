@@ -20,16 +20,16 @@ app.get('/', function(request, response){ //app.get就是幫你做路由(分辨�
 	response.end(); //end為回傳給使用者
 });
 
-app.get('/api/query', function(request, response){
-	response status (200).send('query is under construction');
+app.get('/api/query',function(request,response){
+	response.status(200).send('Query is under construction');
 });
 
-app.get('/api/Insert', function(request, response){
+app.get('/api/insert', function(request, response){
 	var title = request.query.title;
 	var desc = request.query.desc;
 	var owner = request.query.owner;
 	var time = request.query.time;
-	response status (200).send('Insert title ='+ title +',desc')
+	response status (200).send('Insert title ='+ title +',desc');
 });
 
 app.get('/api/delete', function(request, response){
@@ -55,5 +55,5 @@ var server = app.listen(process.env.PORT || 8080, function() {
   console.log("App now running on port", port);
 });
 
-
+app.listen(5000);
 
